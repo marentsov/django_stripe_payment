@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block title %}{{ item.name }}{% endblock %}
+{% block content %}
+    <h1>{{ item.name }}</h1>
+    <p>{{ item.description }}</p>
+    <p>Цена: {{ item.price }} {{ item.currency }}</p>
+    <form method="post" action="{% url 'store:create_order' %}">
+        {% csrf_token %}
+        <input type="hidden" name="item_ids" value="{{ item.id }}">
+        <input type="number" name="quantities" value="1" min="1">
+        <button type="submit">Добавить в заказ</button>
+    </form>
+    <script>
+        var stripe = Stripe('{{ stripe_publishable_key }}');
+    </script>
+{% endblock %}
