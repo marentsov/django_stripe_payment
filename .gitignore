@@ -15,3 +15,5 @@ wheels/
 
 .python-version
 
+db.sqlite3
+
