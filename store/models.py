@@ -11,6 +11,20 @@ class Item(models.Model):
         default='USD',
         verbose_name='Валюта оплаты'
     )
+    discount = models.ForeignKey(
+        to='Discount',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        verbose_name='Скидка'
+    )
+    tax = models.ForeignKey(
+        to='Tax',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        verbose_name='Налог'
+    )
 
     class Meta:
         verbose_name = 'Товар'
@@ -55,15 +69,24 @@ class Order(models.Model):
         verbose_name_plural = 'Заказы'
 
     def get_total(self):
-
-        total = sum(item.price for item in self.items.all())
-
+        order_items = self.orderitem_set.all()
+        if not order_items:
+            return 0.00
+        currencies = {order_item.item.currency for order_item in order_items}
+        if len(currencies) > 1:
+            raise ValueError("Все товары в заказе должны иметь одну валюту")
+        total = 0
+        for order_item in order_items:
+            item_total = order_item.item.price * order_item.quantity
+            if order_item.item.discount:
+                item_total *= (1 - (order_item.item.discount.percent / 100))
+            if order_item.item.tax:
+                item_total *= (1 + (order_item.item.tax.rate / 100))
+            total += item_total
         if self.discount:
             total *= (1 - (self.discount.percent / 100))
-
         if self.tax:
             total *= (1 + (self.tax.rate / 100))
-
         return round(total, 2)
 
     def __str__(self):

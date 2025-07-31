@@ -1,6 +1,7 @@
 from django.urls import path
 from .views import (
     ItemDetailView,
+    ItemListView,
     CreateOrderView,
     CreatePaymentIntentView,
     CheckoutView,
@@ -10,6 +11,7 @@ from .views import (
 app_name = 'store'
 
 urlpatterns = [
+    path('', ItemListView.as_view(), name='item_list'),
     path('item/<int:pk>/', ItemDetailView.as_view(), name='item_detail'),
     path('order/create/', CreateOrderView.as_view(), name='create_order'),
     path('buy/<int:pk>/', CreatePaymentIntentView.as_view(), name='create_payment_intent'),

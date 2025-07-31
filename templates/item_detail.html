@@ -1,15 +1,34 @@
 {% extends 'base.html' %}
 {% block title %}{{ item.name }}{% endblock %}
 {% block content %}
-    <h1>{{ item.name }}</h1>
-    <p>{{ item.description }}</p>
-    <p>Цена: {{ item.price }} {{ item.currency }}</p>
-    <form method="post" action="{% url 'store:create_order' %}">
-        {% csrf_token %}
-        <input type="hidden" name="item_ids" value="{{ item.id }}">
-        <input type="number" name="quantities" value="1" min="1">
-        <button type="submit">Добавить в заказ</button>
-    </form>
+    <h1 class="mb-4">{{ item.name }}</h1>
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Описание</h5>
+            <p class="card-text">{{ item.description }}</p>
+            <p class="card-text"><strong>Цена:</strong> {{ item.price }} {{ item.currency }}</p>
+            {% if item.discount %}
+                <p class="card-text text-success"><strong>Скидка:</strong> {{ item.discount.name }} ({{ item.discount.percent }}%)</p>
+            {% else %}
+                <p class="card-text text-muted"><strong>Скидка:</strong> Отсутствует</p>
+            {% endif %}
+            {% if item.tax %}
+                <p class="card-text text-danger"><strong>Налог:</strong> {{ item.tax.name }} ({{ item.tax.rate }}%)</p>
+            {% else %}
+                <p class="card-text text-muted"><strong>Налог:</strong> Отсутствует</p>
+            {% endif %}
+            <form method="post" action="{% url 'store:create_order' %}">
+                {% csrf_token %}
+                <input type="hidden" name="item_ids" value="{{ item.id }}">
+                <div class="mb-3">
+                    <label for="quantity" class="form-label">Количество:</label>
+                    <input type="number" id="quantity" name="quantities" value="1" min="1" class="form-control w-25">
+                </div>
+                <button type="submit" class="btn btn-success">Добавить в заказ</button>
+            </form>
+        </div>
+    </div>
+    <a href="{% url 'store:item_list' %}" class="btn btn-secondary mt-3">Назад к списку товаров</a>
     <script>
         var stripe = Stripe('{{ stripe_publishable_key }}');
     </script>

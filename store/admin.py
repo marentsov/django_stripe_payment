@@ -6,12 +6,14 @@ class ItemAdmin(admin.ModelAdmin):
     list_display = ['name', 'price', 'currency', 'description']
     list_filter = ['currency']
     search_fields = ['name', 'description']
+    autocomplete_fields = ['discount', 'tax']
 
 @admin.register(Order)
 class OrderAdmin(admin.ModelAdmin):
     list_display = ['id', 'created_at', 'get_total']
     list_filter = ['created_at']
     search_fields = ['id']
+    autocomplete_fields = ['discount', 'tax']
 
 @admin.register(OrderItem)
 class OrderItemAdmin(admin.ModelAdmin):

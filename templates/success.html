@@ -1,7 +1,11 @@
 {% extends 'base.html' %}
-{% block title %}Успешная оплата{% endblock %}
+{% block title %}
+Успешная оплата!
+{% endblock %}
 {% block content %}
-    <h1>Успешная оплата</h1>
-    <p>{{ message }}</p>
-    <a href="{% url 'store:item_detail' pk=1 %}">Вернуться к товарам</a>
+    <h1 class="mb-4">Успешная оплата</h1>
+    <div class="alert alert-success" role="alert">
+        {{ message }}
+    </div>
+    <a href="{% url 'store:item_list' %}" class="btn btn-primary">Вернуться к списку товаров</a>
 {% endblock %}

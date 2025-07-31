@@ -1,0 +1,6 @@
+INFO 2025-07-31 08:11:06,810 views Creating order with items: ['2'], quantities: ['10']
+INFO 2025-07-31 08:11:06,818 views Order 18 created successfully with 1 items
+INFO 2025-07-31 08:11:06,830 views Accessing checkout for order 18
+INFO 2025-07-31 08:11:22,414 views Creating PaymentIntent for order 18
+INFO 2025-07-31 08:11:23,326 views PaymentIntent pi_3RqraBA6vivn0l6e0tpYoNNr created for order 18
+INFO 2025-07-31 08:11:24,416 views Payment completed successfully
