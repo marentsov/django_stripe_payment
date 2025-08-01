@@ -2,7 +2,10 @@ migrate:
 	uv run python manage.py collectstatic --noinput
 	uv run python manage.py makemigrations
 	uv run python manage.py migrate
-	uv run python manage.py createsuperuser --noinput --username $${DJANGO_SUPERUSER_USERNAME} --password $${DJANGO_SUPERUSER_PASSWORD} || echo "Superuser already exists or skipped"
+	uv run python manage.py createsuperuser --noinput \
+        --username $${DJANGO_SUPERUSER_USER} \
+        --email $${DJANGO_SUPERUSER_EMAIL} \
+        || echo "Superuser already exists or skipped"
 
 dev:
 	uv run python manage.py runserver
