@@ -1,28 +1,41 @@
 # Python-generated files
 __pycache__/
-*.py[oc]
+*.py[co]
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual environments
+.venv/
+venv/
+.env/
+.Python
+.python-version
+
+# Django-generated files
+db.sqlite3
+staticfiles/
+app.logs
+logs/
+
+# Build and distribution artifacts
 build/
 dist/
 wheels/
 *.egg-info
 
-# Virtual environments
-.venv
-
+# IDE and editor files
 .idea/
+*.sublime-*
 
-.env
+# macOS system files
+.DS_Store
 
-.python-version
+# Docker-specific ignores (if any metadata leaks)
+docker-compose.override.yml
+*.dockerignore  # Если используешь, но не коммитишь
 
-db.sqlite3
-
-__pycache__
-*.pyc
-*.pyo
-*.pyd
-.Python
-venv/
-*.sqlite3
-logs/
+# Temporary files
+*.swp
+*~
 

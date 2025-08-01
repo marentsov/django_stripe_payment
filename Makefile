@@ -8,7 +8,7 @@ dev:
 	uv run python manage.py runserver
 
 prod-run:
-	uv run gunicorn -b 0.0.0.0:$(PORT) config.wsgi
+	uv run python -m gunicorn --bind 0.0.0.0:8000 config.wsgi
 
 lint:
 	uv run ruff
