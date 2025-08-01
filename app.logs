@@ -41,3 +41,9 @@ INFO 2025-08-01 07:46:54,562 views Accessing checkout for order 25
 INFO 2025-08-01 07:47:03,466 views Creating order with items: ['2', '3'], quantities: ['1', '1']
 WARNING 2025-08-01 07:47:03,470 views Items have different currencies
 INFO 2025-08-01 08:10:07,338 views Payment completed successfully
+INFO 2025-08-01 11:01:55,276 views Creating order with items: ['1'], quantities: ['1']
+INFO 2025-08-01 11:01:55,289 views Order 26 created successfully with 1 items
+INFO 2025-08-01 11:01:55,317 views Accessing checkout for order 26
+INFO 2025-08-01 11:02:05,869 views Creating PaymentIntent for order 26
+INFO 2025-08-01 11:02:06,409 views PaymentIntent pi_3RrGiwRsjLwuWOzZ1CVLeMrp created for order 26
+INFO 2025-08-01 11:02:07,562 views Payment completed successfully
