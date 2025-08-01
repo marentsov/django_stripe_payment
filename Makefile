@@ -15,3 +15,7 @@ lint:
 
 lint-fix:
 	uv run ruff check --fix
+
+
+tests:
+	uv run pytest

@@ -4,7 +4,7 @@ from django.views.generic import DetailView, ListView, View
 from django.shortcuts import redirect, render
 from django.http import JsonResponse
 from django.contrib import messages
-from .models import Item, Order, OrderItem, Discount, Tax
+from .models import Item, Order, OrderItem
 import logging
 
 log = logging.getLogger('stripe_app')
@@ -42,31 +42,33 @@ class CreateOrderView(View):
                 messages.error(request, 'Некоторые товары не найдены.')
                 return redirect('store:item_list')
 
-            # Проверяем, что все товары имеют одну валюту
             currencies = {item.currency for item in items}
             if len(currencies) > 1:
                 log.warning("Items have different currencies")
                 messages.error(request, 'Все товары в заказе должны иметь одну валюту.')
                 return redirect('store:item_list')
 
-            order = Order.objects.create()
             for item_id, quantity in zip(item_ids, quantities):
                 try:
-                    item = items.get(id=item_id)
                     qty = int(quantity)
                     if qty < 1:
                         log.error(f"Invalid quantity for item {item_id}: {quantity}")
                         messages.error(request, 'Количество должно быть положительным.')
                         return redirect('store:item_list')
-                    OrderItem.objects.create(
-                        order=order,
-                        item=item,
-                        quantity=qty
-                    )
                 except ValueError:
                     log.error(f"Invalid quantity for item {item_id}: {quantity}")
                     messages.error(request, f'Неверное количество для товара {item_id}.')
                     return redirect('store:item_list')
+
+            order = Order.objects.create()
+            for item_id, quantity in zip(item_ids, quantities):
+                item = items.get(id=item_id)
+                qty = int(quantity)
+                OrderItem.objects.create(
+                    order=order,
+                    item=item,
+                    quantity=qty
+                )
 
             log.info(f"Order {order.id} created successfully with {len(item_ids)} items")
             return redirect('store:checkout', pk=order.id)
