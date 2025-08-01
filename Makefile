@@ -2,11 +2,15 @@ migrate:
 	uv run python manage.py collectstatic --noinput
 	uv run python manage.py makemigrations
 	uv run python manage.py migrate
-	uv run python manage.py createsuperuser --noinput \
-        --username $${DJANGO_SUPERUSER_USER} \
-        --email $${DJANGO_SUPERUSER_EMAIL} \
-        || echo "Superuser already exists or skipped"
-
+	uv run python manage.py shell -c "\
+from django.contrib.auth import get_user_model; \
+User = get_user_model(); \
+User.objects.create_superuser( \
+    '$${DJANGO_SUPERUSER_USER}', \
+    '$${DJANGO_SUPERUSER_EMAIL}', \
+    '$${DJANGO_SUPERUSER_PASSWORD}' \
+) if not User.objects.filter(username='$${DJANGO_SUPERUSER_USER}').exists() else None\
+"
 dev:
 	uv run python manage.py runserver
 
