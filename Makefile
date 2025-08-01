@@ -2,7 +2,7 @@ migrate:
 	uv run python manage.py collectstatic --noinput
 	uv run python manage.py makemigrations
 	uv run python manage.py migrate
-	uv run python create_admin.py
+	DJANGO_SETTINGS_MODULE=config.settings uv run python create_admin.py
 
 dev:
 	uv run python manage.py runserver
