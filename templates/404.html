@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block title %}Страница не найдена{% endblock %}
+{% block content %}
+    <h1 class="mb-4">Ошибка 404: Страница не найдена</h1>
+    <div class="alert alert-danger" role="alert">
+        Запрашиваемая страница или ресурс не найдены. Возможно, заказ или товар не существует.
+    </div>
+    <a href="{% url 'store:item_list' %}" class="btn btn-primary">Вернуться к списку товаров</a>
+{% endblock %}

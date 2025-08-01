@@ -1,4 +1,3 @@
-
 {% extends 'base.html' %}
 {% block title %}Оплата{% endblock %}
 {% block content %}
@@ -46,6 +45,7 @@
             card.mount('#card-element');
 
             document.getElementById('submit').addEventListener('click', async () => {
+                document.getElementById('error-message').textContent = ''; // Очищаем предыдущие ошибки
                 const response = await fetch('{% url 'store:create_payment_intent' pk=order.id %}', { method: 'GET' });
                 const data = await response.json();
                 if (data.error) {

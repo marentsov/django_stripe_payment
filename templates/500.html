@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block title %}Внутренняя ошибка сервера{% endblock %}
+{% block content %}
+    <h1 class="mb-4">Ошибка 500: Внутренняя ошибка сервера</h1>
+    <div class="alert alert-danger" role="alert">
+        Произошла ошибка на сервере. Пожалуйста, попробуйте снова позже или свяжитесь с поддержкой.
+    </div>
+    <a href="{% url 'store:item_list' %}" class="btn btn-primary">Вернуться к списку товаров</a>
+{% endblock %}

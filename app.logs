@@ -4,3 +4,40 @@ INFO 2025-07-31 08:11:06,830 views Accessing checkout for order 18
 INFO 2025-07-31 08:11:22,414 views Creating PaymentIntent for order 18
 INFO 2025-07-31 08:11:23,326 views PaymentIntent pi_3RqraBA6vivn0l6e0tpYoNNr created for order 18
 INFO 2025-07-31 08:11:24,416 views Payment completed successfully
+INFO 2025-07-31 08:28:26,714 views Creating order with items: ['1'], quantities: ['1']
+INFO 2025-07-31 08:28:26,721 views Order 19 created successfully with 1 items
+INFO 2025-07-31 08:28:26,730 views Accessing checkout for order 19
+INFO 2025-07-31 08:28:45,564 views Creating PaymentIntent for order 19
+INFO 2025-07-31 08:28:46,068 views PaymentIntent pi_3Rqrr0RsjLwuWOzZ1g3gtvxl created for order 19
+INFO 2025-07-31 08:28:47,034 views Payment completed successfully
+INFO 2025-08-01 07:25:42,408 views Creating order with items: ['1', '3'], quantities: ['1', '1']
+INFO 2025-08-01 07:25:42,421 views Order 21 created successfully with 2 items
+INFO 2025-08-01 07:25:42,445 views Accessing checkout for order 21
+INFO 2025-08-01 07:25:52,956 views Creating order with items: ['1', '3'], quantities: ['1', '1']
+INFO 2025-08-01 07:25:52,961 views Order 22 created successfully with 2 items
+INFO 2025-08-01 07:25:52,967 views Accessing checkout for order 22
+INFO 2025-08-01 07:26:11,271 views Creating PaymentIntent for order 22
+INFO 2025-08-01 07:26:12,642 views PaymentIntent pi_3RrDM0RsjLwuWOzZ1dc8Gm65 created for order 22
+INFO 2025-08-01 07:26:14,258 views Payment completed successfully
+INFO 2025-08-01 07:29:51,567 views Creating order with items: ['1', '2'], quantities: ['1', '1']
+INFO 2025-08-01 07:29:51,583 views Order 23 created successfully with 2 items
+INFO 2025-08-01 07:29:51,593 views Accessing checkout for order 23
+CRITICAL 2025-08-01 07:29:51,597 views Unexpected error in checkout for order 23: Все товары в заказе должны иметь одну валюту
+INFO 2025-08-01 07:35:19,164 views Creating order with items: ['1', '2'], quantities: ['1', '1']
+WARNING 2025-08-01 07:35:19,167 views Items have different currencies
+INFO 2025-08-01 07:35:21,538 views Creating order with items: [], quantities: []
+ERROR 2025-08-01 07:35:21,539 views Invalid items or quantities provided
+INFO 2025-08-01 07:35:24,842 views Creating order with items: ['1'], quantities: ['1']
+INFO 2025-08-01 07:35:24,849 views Order 24 created successfully with 1 items
+INFO 2025-08-01 07:35:24,861 views Accessing checkout for order 24
+INFO 2025-08-01 07:35:34,418 views Creating PaymentIntent for order 24
+INFO 2025-08-01 07:35:35,360 views PaymentIntent pi_3RrDV5RsjLwuWOzZ008EBlKS created for order 24
+INFO 2025-08-01 07:35:36,453 views Payment completed successfully
+INFO 2025-08-01 07:46:50,474 views Creating order with items: ['1', '2'], quantities: ['1', '1']
+WARNING 2025-08-01 07:46:50,481 views Items have different currencies
+INFO 2025-08-01 07:46:54,545 views Creating order with items: ['1'], quantities: ['1']
+INFO 2025-08-01 07:46:54,552 views Order 25 created successfully with 1 items
+INFO 2025-08-01 07:46:54,562 views Accessing checkout for order 25
+INFO 2025-08-01 07:47:03,466 views Creating order with items: ['2', '3'], quantities: ['1', '1']
+WARNING 2025-08-01 07:47:03,470 views Items have different currencies
+INFO 2025-08-01 08:10:07,338 views Payment completed successfully

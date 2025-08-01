@@ -17,3 +17,12 @@ wheels/
 
 db.sqlite3
 
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+.Python
+venv/
+*.sqlite3
+logs/
+
