@@ -2,7 +2,7 @@ migrate:
 	uv run python manage.py collectstatic --noinput
 	uv run python manage.py makemigrations
 	uv run python manage.py migrate
-	uv run python manage.py shell -c "import os; from django.contrib.auth import get_user_model; User = get_user_model(); username = os.getenv('DJANGO_SUPERUSER_USER'); email = os.getenv('DJANGO_SUPERUSER_EMAIL'); password = os.getenv('DJANGO_SUPERUSER_PASSWORD'); User.objects.create_superuser(username, email, password) if not User.objects.filter(username=username).exists() else None"
+	uv run python create_admin.py
 
 dev:
 	uv run python manage.py runserver
